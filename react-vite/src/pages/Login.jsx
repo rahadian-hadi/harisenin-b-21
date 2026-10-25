@@ -7,7 +7,7 @@ import LogoImage from "../assets/logo.png";
 import Heading3 from "../components/heading3";
 import BodyMediumRegular from "../components/bodyMediumRegular";
 import FormLogin from "../components/FormLogin";
-import { ThemeContext } from "../context/theme";
+// import { ThemeContext } from "../context/theme";
 import { useTheme } from "../store/theme"
 
 const STATIC_USERNAME = "admin";
@@ -51,14 +51,8 @@ function LoginPage() {
     event.preventDefault();
     await login(username, password)
   };
-  //   if (username === STATIC_USERNAME && password === STATIC_PASSWORD) {
-  //     navigate("/");
-  //   } else {
-  //     setErrorLogin(true);
-  //   }
-  // };
 
-  const [theme, setTheme] = useState(false);
+  // const [theme, setTheme] = useState(false);
 
   const themeStore = useTheme()
 
@@ -83,16 +77,28 @@ function LoginPage() {
       },
       data: { email: username, password: password }
     };
+
     try {
       const { data } = await axios.request(options);
       console.log(data);
 
       localStorage.setItem("token", data.access_token)
 
-    } catch (error) {
-      console.log(error);
+      navigate("/")
+
+    } catch {
+      setErrorLogin(true)
     }
   }
+
+  useEffect(() => {
+    // ngambil token yang ada di storage
+    const token = localStorage.getItem("token")
+
+    if (token) {
+      navigate("/")
+    }
+  }, [])
 
   return (
     <>
