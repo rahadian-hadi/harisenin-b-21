@@ -9,7 +9,7 @@ import FilmCover3Image from "../assets/film-cover-3.png"
 import FilmCover4Image from "../assets/film-cover-4.png"
 import Carousel from "../components/Carousel";
 import Card from "../components/Card";
-import DetailVideoModal from "../components/DetailVideoModal";
+// import DetailVideoModal from "../components/DetailVideoModal";
 
 export default function HomePage() {
   return (
@@ -209,7 +209,7 @@ export default function HomePage() {
             type={2}
           />
         </Carousel>
-        <DetailVideoModal/>
+        {/* <DetailVideoModal/> */}
       </main>
     </>
   );
