@@ -1,4 +1,15 @@
-export default function Card(props) {
+interface ICardProps {
+  id: string;
+  onClick: (id: string) => void;
+  title: string;
+  rating: number;
+  isPremium: boolean;
+  image: string;
+  type: 1 | 2;
+}
+
+export default function Card(props: ICardProps) {
+
   const { id, onClick, title, rating, isPremium, image, type } = props;
 
   return (
